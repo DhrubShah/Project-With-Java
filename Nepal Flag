@@ -1,1 +1,49 @@
+Nepal Flag <br>
+Author-Dhrub Shah
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Path2D;
+
+public class NepalFlag extends JPanel {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        // Set background color to crimson
+        g2d.setColor(new Color(206, 17, 38));
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+
+        // Draw the upper triangle (mountains)
+        Path2D.Double upperTriangle = new Path2D.Double();
+        upperTriangle.moveTo(0, 0);
+        upperTriangle.lineTo(getWidth(), 0);
+        upperTriangle.lineTo(getWidth() / 2.0, getHeight() / 2.0);
+        upperTriangle.closePath();
+        g2d.setColor(Color.WHITE);
+        g2d.fill(upperTriangle);
+
+        // Draw the lower triangle (another part of the mountains)
+        Path2D.Double lowerTriangle = new Path2D.Double();
+        lowerTriangle.moveTo(0, getHeight());
+        lowerTriangle.lineTo(getWidth(), getHeight());
+        lowerTriangle.lineTo(getWidth() / 2.0, getHeight() / 2.0);
+        lowerTriangle.closePath();
+        g2d.setColor(Color.WHITE);
+        g2d.fill(lowerTriangle);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Nepal Flag");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.add(new NepalFlag());
+            frame.setSize(300, 200); // Adjust the size as needed
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
+    }
+}
 
