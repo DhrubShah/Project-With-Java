@@ -1,1 +1,61 @@
+To make Quadrilateral
+Author- Dhrub Shah
+    class Quadrilateral {
+    protected double side1;
+    protected double side2;
+    protected double side3;
+    protected double side4;
 
+    public Quadrilateral(double side1, double side2, double side3, double side4) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+        this.side4 = side4;
+    }
+
+    public double calculatePerimeter() {
+        return side1 + side2 + side3 + side4;
+    }
+
+    public void display() {
+        System.out.println("Quadrilateral with sides: " + side1 + ", " + side2 + ", " + side3 + ", " + side4);
+    }
+}
+
+class Rectangle extends Quadrilateral {
+    public Rectangle(double length, double width) {
+        super(length, width, length, width);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Rectangle with length " + side1 + " and width " + side2);
+    }
+}
+
+class Square extends Quadrilateral {
+    public Square(double side) {
+        super(side, side, side, side);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Square with side " + side1);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Quadrilateral quad = new Quadrilateral(5.0, 6.0, 7.0, 8.0);
+        quad.display();
+        System.out.println("Perimeter: " + quad.calculatePerimeter());
+
+        Rectangle rect = new Rectangle(4.0, 6.0);
+        rect.display();
+        System.out.println("Perimeter: " + rect.calculatePerimeter());
+
+        Square square = new Square(5.0);
+        square.display();
+        System.out.println("Perimeter: " + square.calculatePerimeter());
+    }
+}
